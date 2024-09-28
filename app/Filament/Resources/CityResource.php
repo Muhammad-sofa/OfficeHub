@@ -17,13 +17,20 @@ class CityResource extends Resource
 {
     protected static ?string $model = City::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-globe-americas';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('name')
+                ->helperText('Gunakan nama data dengan tepat.')
+                ->required()
+                ->maxLength(255),
+
+                Forms\Components\FileUpload::make('photo')
+                ->image()
+                ->required(),
             ]);
     }
 
@@ -31,7 +38,10 @@ class CityResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name')
+                ->searchable(),
+
+                Tables\Columns\ImageColumn::make('photo')
             ])
             ->filters([
                 //
