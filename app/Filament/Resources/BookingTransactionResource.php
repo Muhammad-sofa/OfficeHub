@@ -23,7 +23,27 @@ class BookingTransactionResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('name')
+                ->required()
+                ->maxLength(255),
+
+                Forms\Components\TextInput::make('booking_trx_id')
+                ->required()
+                ->maxLength(255),
+
+                Forms\Components\TextInput::make('phone_number')
+                ->required()
+                ->maxLength(255),
+
+                Forms\Components\TextInput::make('total_amount')
+                ->required()
+                ->numeric()
+                ->prefix('IDR'),
+                
+                Forms\Components\TextInput::make('duration')
+                ->required()
+                ->numeric()
+                ->prefix('Days'),
             ]);
     }
 
