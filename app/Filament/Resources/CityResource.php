@@ -42,6 +42,8 @@ class CityResource extends Resource
                 ->searchable(),
 
                 Tables\Columns\ImageColumn::make('photo')
+            ->disk('public')
+            ->url(fn ($record) => $record->photo ? asset('storage/' . $record->photo) : null),
             ])
             ->filters([
                 //
