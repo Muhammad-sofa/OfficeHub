@@ -20,4 +20,10 @@ class BookingTransaction extends Model
         'ended_at',
         'office_space_id'
     ];
+
+    public function officeSpace()
+    {
+        return $this->belongsTo(OfficeSpace::class);
+    }
+
 }
