@@ -44,6 +44,25 @@ class BookingTransactionResource extends Resource
                 ->required()
                 ->numeric()
                 ->prefix('Days'),
+
+                Forms\Components\DatePicker::make('started_at')
+                ->required(),
+
+                Forms\Components\DatePicker::make('ended_at')
+                ->required(),
+
+                Forms\Components\Select::make('is_paid')
+                ->options([
+                    true => 'Paid',
+                    false => 'Not Paid',
+                ])
+                ->required(),
+
+                Forms\Components\Select::make('office_space_id')
+                ->relationship('officeSpace', 'name')
+                ->searchable()
+                ->preload()
+                ->required(),
             ]);
     }
 
