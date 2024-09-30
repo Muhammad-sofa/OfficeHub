@@ -35,8 +35,8 @@ class City extends Model
         return $this->hasMany(OfficeSpaceBenefit::class);
     }
 
-    public function officeSpaces(): BelongsTo
+    public function officeSpaces(): HasMany
     {
-        return $this->belongsTo(OfficeSpace::class);
+        return $this->hasMany(OfficeSpace::class);
     }
 }
